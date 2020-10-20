@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+#Custom
+firebase-config.js
+wd-elective-1-8290c3a1df4d.json
