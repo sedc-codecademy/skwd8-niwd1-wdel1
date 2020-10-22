@@ -13,6 +13,11 @@ export class AuthService {
 
   register({email, password})
   {
-    return this._http.post(`${environment.apiUrl}/auth/register`, {email: email, password:password});
+    return this._http.post(`${environment.apiUrl}/auth/register`, {email: email, password:password}, {withCredentials: true});
+  }
+
+  login({email, password})
+  {
+    return this._http.post(`${environment.apiUrl}/auth/login`, {email: email, password:password}, {withCredentials: true});
   }
 }

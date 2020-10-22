@@ -6,7 +6,6 @@ const app = firebase.initializeApp(config);
 if( ! process.firebase )
 {
 	process.firebase = app;
-	console.log(app);
 }
 else
 console.log('Firebase app connection already exist');

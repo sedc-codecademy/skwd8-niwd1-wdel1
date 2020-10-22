@@ -18,6 +18,7 @@ const session = require('./consts/server.session.const');
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || "0.0.0.0";
 
+app.set('trust proxy', 1) // trust first proxy
 app.use(cors);
 app.use(express.static('static'));
 app.use(session);
@@ -29,12 +30,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-app.use('/api', router);
-
 app.use((req, res, next) => {
 	console.log(req.session.id);
 	next();
 })
+
+app.use('/api', router);
+
 
 app.listen(PORT, HOST, () => {
 	console.log(`Server is running on ${HOST}:${PORT}`);

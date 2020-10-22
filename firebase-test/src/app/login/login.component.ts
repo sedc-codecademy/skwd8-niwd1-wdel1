@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.less']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.less']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   constructor(
     private _auth:AuthService,
@@ -20,15 +20,15 @@ export class RegisterComponent implements OnInit {
 
   sendForm(formData:NgForm)
   {
-    console.log(formData.value);
-
     if(formData.valid)
     {
-      this._auth.register(formData.value).subscribe(data => { 
-        
-        formData.reset();
-        this._router.navigate(['/login']);
-      });
+      this._auth.login(formData.value).subscribe((data) => {
+        localStorage.setItem('user', JSON.stringify(data));
+
+        // this._router.navigate(['/dashboard']);
+        window.location.href = '/dashboard';
+      })
     }
   }
+
 }
