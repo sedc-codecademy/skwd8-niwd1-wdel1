@@ -32,15 +32,12 @@ export class ProfileComponent implements OnInit {
 
   getProfile()
   {
-    let userData = JSON.parse(localStorage.getItem('user'));
-
-    this._ps.getProfileData(userData.user.email).subscribe((data:iProfile[]) => {
+    
+    this._ps.getProfileData().subscribe((data:iProfile[]) => {
       
       if(data.length)
       this.userData = data[0];
 
-      if( ! this.userData.email )
-      this.userData.email = userData.user.email;
     }, (error) => { 
       if(error.error.code && error.error.code === 'permission-denied')
       {

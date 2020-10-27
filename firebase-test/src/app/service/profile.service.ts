@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { iProfile } from '../interface/profile.interface';
 
@@ -8,13 +9,15 @@ import { iProfile } from '../interface/profile.interface';
 })
 export class ProfileService {
 
+  user:BehaviorSubject<boolean> = new BehaviorSubject(false);
+  
   constructor(
     private _http:HttpClient
-  ) { }
+  ) {}
 
-  getProfileData(email:string)
+  getProfileData()
   {
-    return this._http.get(`${environment.apiUrl}/profile/${email}`, {withCredentials: true});
+    return this._http.get(`${environment.apiUrl}/profile`, {withCredentials: true});
   }
 
   setProfileData(data:iProfile)

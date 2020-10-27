@@ -2,12 +2,14 @@ const router = require('express').Router();
 
 const auth = require('../routes/auth.route');
 const profile = require('../routes/profile.route');
+const roles = require('../routes/roles.route');
 
 router.get('/healthcheck', (req, res) => {
 	res.status(200).json({session: req.session.id});
 });
 
-router.use("/auth", auth); //localhost:8080/auth -> /login || /register 
-router.use("/profile", profile); //localhost:8080/profile
+router.use("/auth", auth); //localhost:8080/api/auth -> /login || /register 
+router.use("/profile", profile); //localhost:8080/api/profile
+router.use('/roles', roles); //localhost:8080/api/roles
 
 module.exports = router;

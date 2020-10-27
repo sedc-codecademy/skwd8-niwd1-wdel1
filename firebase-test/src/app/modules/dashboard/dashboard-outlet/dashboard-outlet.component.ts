@@ -13,8 +13,7 @@ export class DashboardOutletComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if( ! localStorage.getItem('user') )
-    this._router.navigate(['/']);
+    
   }
 
 }

@@ -4,11 +4,12 @@ import { DashboardOutletComponent } from './dashboard-outlet/dashboard-outlet.co
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { RolesManagementComponent } from './roles-management/roles-management.component';
 
 
 
 @NgModule({
-  declarations: [DashboardOutletComponent, ProfileComponent],
+  declarations: [DashboardOutletComponent, ProfileComponent, RolesManagementComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

@@ -12,12 +12,13 @@ class ProfileController
 			city: undefined,
 			fullname: undefined,
 			country: undefined,
-			zipcode: undefined
+			zipcode: undefined,
+			roles: ['user']
 		}
 	}
 
 	getProfile(email){ 
-		return new Promise((s, f) => {
+		return new Promise( (s, f) => {
 			//req.session.user.user.email
 			process.firebase.firestore() //Active DB connection
 			.collection("users") //Prepare to query users collection (table)
@@ -28,6 +29,8 @@ class ProfileController
 
 				result.forEach((doc) => {
 					// doc.data() is never undefined for query doc snapshots
+					//console.log(doc.data())
+
 					data.push(doc.data())
 					/*
 						{
