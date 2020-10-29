@@ -3,6 +3,10 @@ const app = express(); //Server 1
 const router = require('./consts/router.const');
 const cors = require('./consts/cors.const');
 const bodyParser = require('body-parser');
+const storage = require('./consts/storage.const');
+const setParams = require('./consts/environment.const');
+
+setParams(process.env.ENVIRONMENT);
 
 //const app2 = express(); //Server 2
 
@@ -17,6 +21,7 @@ const session = require('./consts/server.session.const');
 
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || "0.0.0.0";
+
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(cors);
