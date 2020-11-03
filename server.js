@@ -4,6 +4,7 @@ const router = require('./consts/router.const');
 const cors = require('./consts/cors.const');
 const bodyParser = require('body-parser');
 const storage = require('./consts/storage.const');
+const path = require('path');
 const setParams = require('./consts/environment.const');
 
 setParams(process.env.ENVIRONMENT);
