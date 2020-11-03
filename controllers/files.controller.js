@@ -37,11 +37,14 @@ class FilesController
 	{	
 		let fullpath = [process.env.mainDir];
 		if(currentDir != "/")
-		fullpath.push(currentDir.split("/"))
-		fullpath.push(dirname);
+		{
+			fullpath.push(currentDir.split("/"))
+			fullpath.push(dirname);
+		}
 		
 		// console.log(fullpath.join("/"));
 		// return 1;
+		console.log(fullpath)
 		return new Promise((s, f) => {
 			process.firebaseStorage.bucket(fullpath.join("/")).upload("./controllers/README.MD", {
 				
@@ -62,16 +65,26 @@ class FilesController
 			process.firebaseStorage
 			.bucket(fbconfig.storageBucket)
 			.file([process.env.mainDir, filePath].join("/"))
-			//.makePublic()
-			.getMetadata()
-			.then((metadata) => {
-				console.log(metadata);
-				s(metadata);
+			.makePublic()
+			.then(() => {
+
+				process.firebaseStorage
+				.bucket(fbconfig.storageBucket)
+				.file([process.env.mainDir, filePath].join("/"))
+				.getMetadata()
+				.then((metadata) => {
+					console.log(metadata);
+					s(metadata);
+				})
+				.catch(error => {
+					console.log(error)
+					f(error);
+				});
 			})
 			.catch(error => {
-				console.log(error)
+				console.log('Public', error);
 				f(error);
-			});
+			})
 		})
 	}
 }
