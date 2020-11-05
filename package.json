@@ -3,13 +3,12 @@
 	"version": "0.0.1",
 	"scripts": {
 		"start": "node server.js",
-		"set-env": "cross-env apiKey=AIzaSyDtoH3O2xt_nfezZCNNEpUVR8AkRqZtHT4 authDomain=wd-elective-1.firebaseapp.com databaseURL=https://wd-elective-1.firebaseio.com projectId=wd-elective-1 storageBucket=wd-elective-1.appspot.com messagingSenderId=328716025955 appId=1:328716025955:web:3bcdbbd4ac8f0c75057856 measurementId=G-9VYPFG3NH9",
-		"start-dev": " npm run set-env ENVIRONMENT=dev node server.js",
-		"start-prod": "npm run set-env ENVIRONMENT=prod node server.js",
-		"start-stage": "npm run set-env ENVIRONMENT=prod PORT=8081 node server.js",
-		"dev-build": "cd firebase-test && ng build && cd ../ && npm run set-env start-dev",
-		"stage-build": "cd firebase-test && ng build --configuration=stage && cd ../ &&  npm run set-env  start-stage",
-		"prod-build": "cd firebase-test && ng build --configuration=production && cd ../ &&  npm run set-env  start",
+		"start-dev": "ENVIRONMENT=dev node server.js",
+		"start-prod": "ENVIRONMENT=prod node server.js",
+		"start-stage": "ENVIRONMENT=prod PORT=8081 node server.js",
+		"dev-build": "cd firebase-test && ng build && cd ../ && npm run start-dev",
+		"stage-build": "cd firebase-test && ng build --configuration=stage && cd ../ &&  npm run start-stage",
+		"prod-build": "cd firebase-test && ng build --configuration=production && cd ../ && npm run start",
 		"test-dir": "ls && dir"
 	},
 	"dependencies": {
