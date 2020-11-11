@@ -18,6 +18,7 @@ if(process.env.TESTSETUP == 'dev')
 
 	if(file)
 	addToEnvironment(JSON.parse(file));
+	
 
 	//Read json file config from cloud/storage in Google Cloud
 	let jsonfile = fs.readFileSync('../wd-elective-1-e5b6145ef20d.json').toString();

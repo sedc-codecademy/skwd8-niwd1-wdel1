@@ -6,9 +6,9 @@
 		"start-dev": "TESTSETUP=dev ENVIRONMENT=dev PORT=8081 node server.js",
 		"start-prod": "TESTSETUP=dev ENVIRONMENT=prod node server.js",
 		"start-stage": "TESTSETUP=dev ENVIRONMENT=prod PORT=8081 node server.js",
-		"dev-build": "cd firebase-test && ng build && cd ../ && npm run start-dev",
-		"stage-build": "cd firebase-test && ng build --configuration=stage && cd ../ && npm run start-stage",
-		"prod-build": "cd firebase-test && ng build --configuration=production && cd ../ && npm run start",
+		"dev-build": "cd firebase-test && ng build && cd ../ ",
+		"stage-build": "cd firebase-test && ng build --configuration=stage && cd ../",
+		"prod-build": "cd firebase-test && ng build --configuration=production && cd ../",
 		"test-dir": "ls && dir"
 	},
 	"dependencies": {
