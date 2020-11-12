@@ -1,24 +1,9 @@
-const setup = require('./setup');
 const express = require('express');
 const https = require('https'); //Native from nodejs API
 const fs = require('fs'); //Native from nodejs API (filesystem)
 const app = express(); //Server 1 
-const router = require('./consts/router.const');
 const cors = require('./consts/cors.const');
-const bodyParser = require('body-parser');
-const storage = require('./consts/storage.const');
 const path = require('path');
-const setParams = require('./consts/environment.const');
-
-setParams(process.env.ENVIRONMENT);
-
-//const app2 = express(); //Server 2
-
-//Init process (global) based firebase connection
-const fbClient = require('./consts/firebase.const'); //read/write
-
-//Create default nodejs session
-const session = require('./consts/server.session.const');
 
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || "0.0.0.0";
@@ -27,22 +12,6 @@ const HOST = process.env.HOST || "0.0.0.0";
 app.set('trust proxy', 1) // trust first proxy
 app.use(cors);
 app.use(express.static(path.join(__dirname, 'static')));
-app.use(session);
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-
-// parse application/json
-app.use(bodyParser.json())
-
-
-app.use((req, res, next) => {
-	console.log(req.session.id);
-	next();
-})
-
-app.use('/api', router);
-
 
 app.all('/*', function(req, res, next) {
 	console.log(req.url)
@@ -52,8 +21,8 @@ app.all('/*', function(req, res, next) {
 
 if(process.env.ENVIRONMENT == 'dev')
 {
-	let privateKey = fs.readFileSync(`../nodejs-ssl/nodejs-localhost.key`).toString(),
-	certificate = fs.readFileSync(`../nodejs-ssl/nodejs-localhost.crt`).toString();
+	let privateKey = fs.readFileSync(`../nodejs-localhost.key`).toString(),
+	certificate = fs.readFileSync(`../nodejs-localhost.crt`).toString();
 
 	let options = {key: privateKey, cert: certificate};
 
