@@ -41,9 +41,6 @@ build/Release
 node_modules/
 jspm_packages/
 
-#Custom
-configs/
-static/
 
 # TypeScript v1 declaration files
 typings/
