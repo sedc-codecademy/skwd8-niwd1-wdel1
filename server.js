@@ -5,7 +5,7 @@ const app = express(); //Server 1
 const cors = require('./consts/cors.const');
 const path = require('path');
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8082;
 const HOST = process.env.HOST || "0.0.0.0";
 
 
